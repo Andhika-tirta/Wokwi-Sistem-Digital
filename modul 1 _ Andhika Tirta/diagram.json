@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 20, "left": 50, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": 252, "left": 50, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 86.7, "left": 378.6, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 2.4,
+      "left": 318.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -128.4,
+      "left": 147.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 124.2,
+      "left": 319.8,
+      "rotate": 90,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -35,
+      "left": 181.55,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.2", "lcd:GND", "black", [ "v24", "*", "h-20" ] ],
+    [ "uno:5V", "lcd:VCC", "red", [ "v28", "*", "h-16" ] ],
+    [ "uno:A4", "lcd:SDA", "green", [ "v32", "*", "h-12" ] ],
+    [ "uno:A5", "lcd:SCL", "blue", [ "v36", "*", "h-8" ] ],
+    [ "dht1:VCC", "uno:5V", "red", [ "v28.8", "h-182.4" ] ],
+    [ "dht1:GND", "uno:GND.3", "black", [ "v28.8", "h-192" ] ],
+    [ "dht1:SDA", "uno:2", "green", [ "v28.8", "h-124.7" ] ],
+    [ "bz1:1", "uno:GND.1", "green", [ "v0", "h-182.4", "v-9.6" ] ],
+    [ "bz1:2", "uno:8", "green", [ "v-9.6", "h-134.8" ] ],
+    [ "led1:C", "uno:GND.1", "green", [ "v0" ] ],
+    [ "led1:A", "r1:2", "green", [ "v0" ] ],
+    [ "r1:1", "uno:9", "green", [ "h0" ] ],
+    [ "btn1:2.l", "uno:7", "green", [ "v-19.2", "h-105.8" ] ],
+    [ "btn1:1.l", "uno:GND.3", "green", [ "v0", "h-144" ] ],
+    [ "btn1:2.r", "uno:GND.2", "green", [ "v-9.4", "h-134.6" ] ],
+    [ "btn1:1.r", "uno:GND.3", "green", [ "v9.8", "h-134.4" ] ]
+  ],
+  "dependencies": {}
+}
